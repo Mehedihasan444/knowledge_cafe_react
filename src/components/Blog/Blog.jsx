@@ -51,7 +51,7 @@ const Blog = ({ blog, handleAddToBookmark,handleReadTime }) => {
           </span>
         ))}
       </p>
-      <button onClick={()=>handleReadTime(reading_time,title)} className=" text-purple-500 text-xl font-medium underline">
+      <button onClick={()=>{setColorBtn(false);handleReadTime(reading_time,title)}} className=" text-purple-500 text-xl font-medium underline">
         Mark as read
       </button>
     </div>

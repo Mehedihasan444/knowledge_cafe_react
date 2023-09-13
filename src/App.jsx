@@ -8,19 +8,34 @@ function App() {
   const [bookMarks, setBookmarks] = useState([]);
 
   const handleAddToBookmark = (blog_title) => {
-    // console.log(blog);
-    const newBookmarks = [...bookMarks, blog_title];
+    // console.log(blog_title);
+    const isExist = bookMarks.find(item=>item.title===blog_title.title);
+    if (isExist) {
+      alert("Already exit in the bookmark.")
+      return;
+    }
+    else{
+      const newBookmarks = [...bookMarks, blog_title];
     setBookmarks(newBookmarks);
+    }
   };
   // console.log(bookMarks);
 
   const [readTime, setReadTime] = useState(0);
- 
+ const [titles,setTitles] = useState([]);
 
   const handleReadTime = (blogTime,title) => {
+    const isPresent = titles.find(Title=>Title.title ===title.title);
+    if (isPresent) {
+      alert("Already marked as read.");
+      return;
+    }
+   else{
     const totalReadTime = readTime + blogTime;
     setReadTime(totalReadTime);
-    
+    const newTitles = [...titles,title];
+    setTitles(newTitles);
+   }
     const remainingBookmarks = bookMarks.filter((bookmark)=>bookmark.title!==title);
     setBookmarks(remainingBookmarks);
   };
